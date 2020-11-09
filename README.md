@@ -173,6 +173,53 @@ myTransformer({ foo: 'baz' })
 
 > See **Complete Example** for more advanced details on usage.
 
+#### Handling `unsupported` (un-registered) values
+
+Keys that don't have registered handler ignored by default. However, you can tell which key's you want to proceed with.
+
+This can be useful for example when dealing with CSS, and you need to pass some ancient or browser specific
+style property.
+
+You have tu use the prop key: `unsupported` which can be:
+
+- `true`: all props allowed
+- `string[]`: list of props to allow
+- `string`: a single prop to allow
+
+```
+// `-moz-*` will be ignored
+{
+    padding: '10px',
+    '-moz-border-radius': '10px',
+    '-moz-foo-bar': 12
+}
+
+// only `-moz-foo-bar` will be ignored
+{
+    padding: '10px',
+    '-moz-border-radius': '10px',
+    '-moz-foo-bar': 12
+    unsupported: '-moz-foo-bar'
+}
+
+// allow all
+{
+    padding: '10px',
+    '-moz-border-radius': '10px',
+    '-moz-foo-bar': 12
+    unsupported: true
+}
+
+// specify what's allowed
+{
+    padding: '10px',
+    '-moz-border-radius': '10px',
+    '-moz-foo-bar': 12
+    unsupported: ['-moz-foo-bar', '-moz-border-radius']
+}
+   
+```
+
 ### Complete example
 
 Let's see a simple example to build string based CSS output for a Style Object:
