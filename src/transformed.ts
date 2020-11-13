@@ -2,8 +2,12 @@ import { toCamelCase, compose } from '@/utils'
 import { parseMapValue } from '@/parsers'
 import { Options, OutputTransformer, Parser, TransformedFn } from '@/types'
 
-const defaultTransformer = (a, b) => Object.assign(a, b)
+const defaultTransformer = (output, value, prop) => {
+    output[prop] = value
+    return output
+}
 defaultTransformer.defaultOutput = () => ({})
+defaultTransformer.unsupportedHandler = defaultTransformer
 
 export default function transformed(): TransformedFn {
     const registry = new Map()
@@ -66,6 +70,7 @@ export default function transformed(): TransformedFn {
     }
 
     transformedFn.setOutputTransformer = _ => {
+        if (!_ || !_.defaultOutput) throw 'Output transformer MUST have a `defaultOutput` specified!'
         outputTransformer = transformedFn.outputTransformer = _
         return transformedFn
     }
