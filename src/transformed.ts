@@ -117,7 +117,7 @@ export default function transformed(): TransformedFn {
 
     transformedFn.toValue = (prop, value) => {
         const definition = registry.get(prop)
-        return definition ? definition.fn(value, prop, transformedFn, {}) : value
+        return definition ? definition.fn(value, prop, transformedFn, {}, definition) : value
     }
 
     return transformedFn
