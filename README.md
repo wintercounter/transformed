@@ -92,7 +92,7 @@ Properties defined in "Babel config fashion". Arrays of property descriptors.
 
 ```js
 // All props
-;[
+const props = [
     // Property
     [
         // Property names
@@ -119,6 +119,22 @@ transform({
 })
 
 // Output: { padding: '30px', background: 'http://mysite.com/images/cars.png' }
+```
+
+In case you're setting an existing prop it will:
+
+-   reuse the existing `property names` found in the registry, you don't need to redefine all;
+-   merge the passed `valueMap` with the existing one;
+-   merge the list of `parsers` with the existing one.
+
+Based on the circumstances you need to control the execution order of parser. Extending the `parser` list can be done
+using Webpack style extend operator (`...`):
+
+```js
+const props = [
+    // In this case transformed will simply prepend your own parser before the existing ones
+    [['p', 'pad', 'padding'], null, [myOwnParser, '...']]
+]
 ```
 
 #### `toValue()`
@@ -182,9 +198,9 @@ style property.
 
 You have tu use the prop key: `unsupported` which can be:
 
-- `true`: all props allowed
-- `string[]`: list of props to allow
-- `string`: a single prop to allow
+-   `true`: all props allowed
+-   `string[]`: list of props to allow
+-   `string`: a single prop to allow
 
 ```
 // `-moz-*` will be ignored
@@ -217,7 +233,7 @@ You have tu use the prop key: `unsupported` which can be:
     '-moz-foo-bar': 12
     unsupported: ['-moz-foo-bar', '-moz-border-radius']
 }
-   
+
 ```
 
 ### Complete example

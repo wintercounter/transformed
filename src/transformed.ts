@@ -1,4 +1,4 @@
-import { toCamelCase, compose } from '@/utils'
+import { toCamelCase, compose, constructParsers } from '@/utils'
 import { parseMapValue } from '@/parsers'
 import { Options, OutputTransformer, Parser, TransformedFn } from '@/types'
 
@@ -78,10 +78,11 @@ export default function transformed(): TransformedFn {
     transformedFn.setProps = _ => {
         for (const [__keys, map = null, _parsers = []] of _) {
             const existing = registry.get(__keys[0])
-            const parsers: Parser[] = existing ? [...existing.parsers, ..._parsers] : _parsers
+            const parsers: Parser[] = constructParsers(existing?.parsers, _parsers)
 
             // Add value map functionality if map is defined for this prop
-            const fn = compose(map ? [parseMapValue, ...parsers] : parsers)
+            // Only add if parseMapValue does not exists yet, we don't want to run it twice
+            const fn = compose(map && !parsers.includes(parseMapValue) ? [parseMapValue, ...parsers] : parsers)
 
             // Let's just use existing keys if already exists
             const _keys = existing?.keys || __keys
