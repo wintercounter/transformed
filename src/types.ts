@@ -54,6 +54,7 @@ export interface TransformedFn {
     setOutputTransformer(outputTransformer: OutputTransformer): TransformedFn
     setProps(props: Props): TransformedFn
     toValue(prop: string, value: unknown)
+    use: (fn: (TransformedFn) => void) => TransformedFn;
 }
 
 export interface Parser {

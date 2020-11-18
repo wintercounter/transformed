@@ -145,6 +145,25 @@ Sometimes you just want to get a value for a prop/value pair.
 myTransformer.toValue('padding', 'large')
 ```
 
+#### `use()`
+
+A simple helper method used to achieve a streaming interface for customization. It awaits a function where you can do
+your customization inside. It's just an API sugar.
+
+```js
+// Instead of
+useMyCustomProp1(myTransformer)
+useMyCustomProp2(myTransformer)
+useMyCustomProp3(myTransformer)
+
+// You can do
+myTransformer.use(myCustomProp1).use(myCustomProp2).use(myCustomProp3)
+```
+
+```
+myTransformer.toValue('padding', 'large')
+```
+
 #### Creating Object Transformers
 
 Object transformer is just a single function with static properties that loops through each property and values using

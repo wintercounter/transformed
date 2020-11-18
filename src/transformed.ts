@@ -121,5 +121,10 @@ export default function transformed(): TransformedFn {
         return definition ? definition.fn(value, prop, transformedFn, {}, definition) : value
     }
 
+    transformedFn.use = (fn) => {
+        fn(transformedFn)
+        return transformedFn
+    }
+
     return transformedFn
 }
