@@ -1,6 +1,6 @@
 {
     "name": "transformed",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A lightweight, low-level, performant, customizable object transformer utility.",
     "main": "dist/index.js",
     "scripts": {

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/wintercounter/transformed/compare/v0.0.4...v0.0.5) (2020-11-18)
+
+
+### Features
+
+* **setProps:** accept Object based property descriptor for easy map extending capability ([272478c](https://github.com/wintercounter/transformed/commit/272478c74ea32bfcc7e2c795014a40a2cdeef9fa))
+* **use:** add `use` helper method as an API sugar for nicer customization ([c49cb5a](https://github.com/wintercounter/transformed/commit/c49cb5a80939ba443f1097f28f16ddc89a53d536))
+
 ### [0.0.4](https://github.com/wintercounter/transformed/compare/v0.0.3...v0.0.4) (2020-11-17)
 
 
