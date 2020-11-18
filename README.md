@@ -51,7 +51,7 @@ outputTransformer: OutputTransformer
 options: Partial<Options>
 setOptions(options: Partial<Options>): TransformedFn
 setOutputTransformer(outputTransformer: OutputTransformer): TransformedFn
-setProps(props: Props): TransformedFn
+setProps(props: Props | ObjectProps): TransformedFn
 toValue(prop: string, value: unknown)
 
 #### `transformed()` (default export)
@@ -82,7 +82,7 @@ const myTransformer = transformed()
 myTransformer.setOutputTransformer(myOutputTransformer)
 ```
 
-> Output transformers always should be set before calling `setProps` because they have the capability to alter prop names when registering them.
+> Output transformers always should be set before calling any `setProps` because they have the capability to alter prop names when registering them.
 
 #### `setProps()`
 
@@ -129,6 +129,19 @@ In case you're setting an existing prop it will:
 
 Based on the circumstances you need to control the execution order of parser. Extending the `parser` list can be done
 using Webpack style extend operator (`...`):
+
+##### ObjectProp shorthand
+
+You may also pass a `key: valueMap` object. This is useful if you want re-configure some existing prop's value map, or
+you simply want to set a single new prop with a value map.
+It cannot set handlers and multiple keys.
+
+```js
+const transform = transformed().setProps({ myProp: { foo: 'bar' } })
+transform({ myProp: 'foo' })
+
+// Output: { myProp: 'bar' }
+```
 
 ```js
 const props = [

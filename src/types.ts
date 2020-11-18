@@ -44,6 +44,7 @@ export type PropsMaps = null | {
 export type PropsParsers = Parser[]
 export type Prop = [PropsKeys] | [PropsKeys, PropsMaps] | [PropsKeys, PropsMaps, PropsParsers]
 export type Props = Prop[]
+export type ObjectProps = { [key: string]: unknown }
 
 export interface TransformedFn {
     (InputObject): Whatever
@@ -52,9 +53,9 @@ export interface TransformedFn {
     options: Partial<Options>
     setOptions(options: Partial<Options>): TransformedFn
     setOutputTransformer(outputTransformer: OutputTransformer): TransformedFn
-    setProps(props: Props): TransformedFn
+    setProps(props: Props | ObjectProps): TransformedFn
     toValue(prop: string, value: unknown)
-    use: (fn: (TransformedFn) => void) => TransformedFn;
+    use: (fn: (TransformedFn) => void) => TransformedFn
 }
 
 export interface Parser {

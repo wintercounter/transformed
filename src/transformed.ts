@@ -1,6 +1,6 @@
 import { toCamelCase, compose, constructParsers } from '@/utils'
 import { parseMapValue } from '@/parsers'
-import { Options, OutputTransformer, Parser, TransformedFn } from '@/types'
+import { Options, OutputTransformer, Parser, Props, TransformedFn } from '@/types'
 
 const defaultTransformer = (output, value, prop) => {
     output[prop] = value
@@ -76,6 +76,13 @@ export default function transformed(): TransformedFn {
     }
 
     transformedFn.setProps = _ => {
+        // Let's transform object inputs first
+        if (!Array.isArray(_) && typeof _ === 'object') {
+            _ = Object.entries(_).reduce((acc, [key, map]) => {
+                acc.push([[key], map as { [key: string]: unknown }])
+                return acc
+            }, [] as Props)
+        }
         for (const [__keys, map = null, _parsers = []] of _) {
             const existing = registry.get(__keys[0])
             const parsers: Parser[] = constructParsers(existing?.parsers, _parsers)
@@ -121,7 +128,7 @@ export default function transformed(): TransformedFn {
         return definition ? definition.fn(value, prop, transformedFn, {}, definition) : value
     }
 
-    transformedFn.use = (fn) => {
+    transformedFn.use = fn => {
         fn(transformedFn)
         return transformedFn
     }
