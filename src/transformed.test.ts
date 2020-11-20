@@ -67,6 +67,18 @@ describe('transformed', () => {
             const instance = transformed().setProps([[['foo'], { 10: 20 }]])
             expect(instance({ foo: 10 })).toStrictEqual({ foo: 20 })
         })
+        it(`can handle object based value maps`, () => {
+            const instance = transformed().setProps({ foo: { 10: 20 } })
+            expect(instance({ foo: 10 })).toStrictEqual({ foo: 20 })
+        })
+        it(`can re-configure maps using object based value maps`, () => {
+            const instance = transformed()
+                .setProps([[['foo'], { 10: 20 }]])
+                .setProps({ foo: { 100: 200 } })
+            // Order is important, we want to see if old values working also after setting new
+            expect(instance({ foo: 100 })).toStrictEqual({ foo: 200 })
+            expect(instance({ foo: 10 })).toStrictEqual({ foo: 20 })
+        })
         it(`can handle a custom handler`, () => {
             const instance = transformed().setProps([[['foo'], null, [input => input * 2]]])
             expect(instance({ foo: 10 })).toStrictEqual({ foo: 20 })
