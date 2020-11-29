@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/wintercounter/transformed/compare/v0.0.2...v0.0.6) (2020-11-29)
+
+
+### Features
+
+* add support for `descriptorOptions` ([5711577](https://github.com/wintercounter/transformed/commit/5711577bbad6618d01b887deff110e2aee3ea05d))
+* **setProps:** accept Object based property descriptor for easy map extending capability ([272478c](https://github.com/wintercounter/transformed/commit/272478c74ea32bfcc7e2c795014a40a2cdeef9fa))
+* **use:** add `use` helper method as an API sugar for nicer customization ([c49cb5a](https://github.com/wintercounter/transformed/commit/c49cb5a80939ba443f1097f28f16ddc89a53d536))
+* add support to extend existing handler in customizable way ([4a3104c](https://github.com/wintercounter/transformed/commit/4a3104cf52d40cf3baaac628206eca64990c79b5))
+
+
+### Bug Fixes
+
+* **TS:** improve several types ([07a1079](https://github.com/wintercounter/transformed/commit/07a1079f445a55280d0bf9aa8df10c56c0e52b37))
+
 ### [0.0.5](https://github.com/wintercounter/transformed/compare/v0.0.4...v0.0.5) (2020-11-18)
 
 
