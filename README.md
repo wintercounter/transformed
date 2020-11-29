@@ -97,10 +97,12 @@ const props = [
     [
         // Property names
         ['p', 'pad', 'padding'],
-        // Value map for this property. Use `null` or leave emoty if not needed.
+        // Optional value map for this property. Use `null` or leave emoty if not needed.
         { large: '30px' },
-        // Value parsers
-        [input => output]
+        // Optional value parsers
+        [input => output],
+        // Optional descriptor options for any extra options you want to add for yourself.
+        { foo: 'bar' }
     ]
 ]
 ```

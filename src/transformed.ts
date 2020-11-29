@@ -83,7 +83,7 @@ export default function transformed(): TransformedFn {
                 return acc
             }, [] as Props)
         }
-        for (const [__keys, map = null, _parsers = []] of _) {
+        for (const [__keys, map = null, _parsers = [], descriptorOptions = {}] of _) {
             const existing = registry.get(__keys[0])
             const parsers: Parser[] = constructParsers(existing?.parsers, _parsers)
 
@@ -113,7 +113,8 @@ export default function transformed(): TransformedFn {
                 keys,
                 map: { ...map, ...existing?.map },
                 parsers,
-                fn
+                fn,
+                ...descriptorOptions
             }
 
             for (const key of keys) {
