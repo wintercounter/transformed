@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/wintercounter/transformed/compare/v0.0.5...v0.0.7) (2020-12-16)
+
+
+### Features
+
+* **cjs:** add support ([3076fa3](https://github.com/wintercounter/transformed/commit/3076fa3823f43b093564f06f324d5f34ada9b749))
+* add support for `descriptorOptions` ([5711577](https://github.com/wintercounter/transformed/commit/5711577bbad6618d01b887deff110e2aee3ea05d))
+
 ### [0.0.6](https://github.com/wintercounter/transformed/compare/v0.0.2...v0.0.6) (2020-11-29)
 
 
