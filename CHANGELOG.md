@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/wintercounter/transformed/compare/v0.0.7...v0.0.9) (2020-12-18)
+
+
+### Features
+
+* add support for empty input object ([be878d8](https://github.com/wintercounter/transformed/commit/be878d813fe374fd92ac6aae5b5bc55b97e502be))
+
 ### [0.0.7](https://github.com/wintercounter/transformed/compare/v0.0.5...v0.0.7) (2020-12-16)
 
 
