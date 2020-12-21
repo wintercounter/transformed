@@ -29,7 +29,12 @@ describe('transformed', () => {
         })
         it(`.setOptions can set options`, () => {
             const instance = transformed().setOptions({ foo: 'bar', autoCamelCase: true })
-            expect(instance.options).toStrictEqual({ autoCamelCase: true, hasOwnPropertyCheck: false, foo: 'bar' })
+            expect(instance.options).toStrictEqual({
+                autoCamelCase: true,
+                hasOwnPropertyCheck: false,
+                foo: 'bar',
+                toValueCache: true
+            })
         })
         it(`.setProps can set props => simple prop`, () => {
             const instance = transformed().setProps([[['foo']]])

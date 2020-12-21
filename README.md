@@ -42,6 +42,8 @@ By default `transformed` won't do anything with your data, you need to define yo
 -   `autoCamelCase` _(default: false)_: automatically adds support for _camelCase_ versions of the passed prop names.
 -   `hasOwnPropertyCheck` _(default: false)_: for a slight performance improvement we're not doing `hasOwnProperty` checks
     by default, but you can enable for cases when not using simple objects as input.
+-   `toValueCache` _(default: true)_: Enables/disable toValue call caching. This can greatly improve performance in when
+    doing expensive repeated tasks using `toValue` calls.
 
 ### API
 

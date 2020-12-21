@@ -14,7 +14,8 @@ export default function transformed(): TransformedFn {
     let outputTransformer: OutputTransformer = defaultTransformer
     const options: Options = {
         autoCamelCase: false,
-        hasOwnPropertyCheck: false
+        hasOwnPropertyCheck: false,
+        toValueCache: true
     }
 
     // Main
@@ -113,6 +114,7 @@ export default function transformed(): TransformedFn {
                 keys,
                 map: { ...map, ...existing?.map },
                 parsers,
+                toValueCache: options.toValueCache ? new Map() : null,
                 fn,
                 ...descriptorOptions
             }
@@ -126,7 +128,17 @@ export default function transformed(): TransformedFn {
 
     transformedFn.toValue = (prop, value) => {
         const definition = registry.get(prop)
-        return definition ? definition.fn(value, prop, transformedFn, undefined, definition) : value
+        if (!definition) return value
+        let result = undefined
+
+        if (options.toValueCache && typeof value !== 'object') {
+            if ((result = definition.toValueCache.get(value)) === undefined) {
+                result = definition.fn(value, prop, transformedFn, undefined, definition)
+                definition.toValueCache.set(value, result)
+            }
+        }
+
+        return result !== undefined ? result : definition.fn(value, prop, transformedFn, undefined, definition)
     }
 
     transformedFn.use = fn => {
