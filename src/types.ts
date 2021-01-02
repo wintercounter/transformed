@@ -42,7 +42,12 @@ export type PropsMaps = null | {
     [key: string]: unknown
 }
 export type PropsParsers = Parser[]
-export type Prop = [PropsKeys] | [PropsKeys, PropsMaps] | [PropsKeys, PropsMaps, PropsParsers]
+export type PropsOptions = { [key: string]: any }
+export type Prop =
+    | [PropsKeys]
+    | [PropsKeys, PropsMaps]
+    | [PropsKeys, PropsMaps, PropsParsers]
+    | [PropsKeys, PropsMaps, PropsParsers, PropsOptions]
 export type Props = Prop[]
 export type ObjectProps = { [key: string]: unknown }
 
