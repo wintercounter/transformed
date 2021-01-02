@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/wintercounter/transformed/compare/v0.0.6...v1.1.0) (2021-01-02)
+
+
+### Features
+
+* add support for `toValueCache` ([8b78df3](https://github.com/wintercounter/transformed/commit/8b78df39d693d7f7d1c9b2e5a2a0b3b8a3b590ae))
+* add support for empty input object ([be878d8](https://github.com/wintercounter/transformed/commit/be878d813fe374fd92ac6aae5b5bc55b97e502be))
+* **cjs:** add support ([3076fa3](https://github.com/wintercounter/transformed/commit/3076fa3823f43b093564f06f324d5f34ada9b749))
+
+
+### Bug Fixes
+
+* **type:** add missing `PropsOption` interface ([79e8ab4](https://github.com/wintercounter/transformed/commit/79e8ab4f6eeabc4ee9688190e6fa11c3a6b22af6))
+
 ### [0.0.9](https://github.com/wintercounter/transformed/compare/v0.0.7...v0.0.9) (2020-12-18)
 
 
