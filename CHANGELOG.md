@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/wintercounter/transformed/compare/v1.1.0...v1.1.2) (2021-01-03)
+
+
+### Bug Fixes
+
+* map value assertion ([4a40cf4](https://github.com/wintercounter/transformed/commit/4a40cf4d16d77041a51207e89173cab6c7354178))
+
 ## [1.1.0](https://github.com/wintercounter/transformed/compare/v0.0.6...v1.1.0) (2021-01-02)
 
 
